@@ -14,3 +14,13 @@ enum Gender {
 
     @@map("gender")
 }
+
+model Employees {
+    id      Int      @map("emp_id")      @db.Integer            @default(autoincrement())
+    name    String      @map("emp_name")    @db.VarChar(45)
+
+
+
+    @@id([id])
+    @@map("employees")
+}
