@@ -16,11 +16,24 @@ enum Gender {
 }
 
 model Employees {
-    id      Int      @map("emp_id")      @db.Integer            @default(autoincrement())
+    id      Int         @map("emp_id")      @db.Integer            @default(autoincrement())
     name    String      @map("emp_name")    @db.VarChar(45)
-
+    // jobId   Int[]       @db.Integer
+    // jobs    Jobs[]      @relation(fields: [jobId], references: [id])
 
 
     @@id([id])
     @@map("employees")
+}
+
+
+model Jobs {
+    id              Int             @map("job_id")      @db.Integer            @default(autoincrement())
+    title           String          @map("job_title")   @db.VarChar(32)        @unique
+    // employeesId     Int[]           @db.Integer
+    // employees       Employees[]     @relation(fields: [employeesId], references: [id])
+
+
+    @@id([id])
+    @@map("jobs")
 }
